@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -39,6 +39,11 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   
   <link rel="stylesheet" href="assets/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -51,9 +56,38 @@
           <img src="assets/preview/RDR2.png" width="auto" height="150" alt="">
       </div>
 
-      <a href="https://rtea.emadadel4-a0a.workers.dev/?download-installer" target="_blank" class="download-btn">
-        تحميل التعريب الآن
-      </a>
+
+      <div class="tabs-container">
+
+        <div class="tabs">
+          <button class="tab-btn active" onclick="openTab(event, 'pc')">PC</button>
+          <button class="tab-btn" onclick="openTab(event, 'steam')">STEAM OS</button>
+          <button class="tab-btn" onclick="openTab(event, 'ps4')">PS4</button>
+        </div>
+
+        <div class="tab-content active" id="pc">
+                <a href="https://rtea.emadadel4-a0a.workers.dev/?download-installer" target="_blank" class="download-btn">
+          تحميل التعريب الآن
+          </a>
+        </div>
+
+      <div class="tab-content" id="steam">
+          <div class="steps">
+            <p>1️⃣ افتح مجلد اللعبة</p>
+            <p>2️⃣ كلك يمين واضغط <b>"Open Terminal here"</b></p>
+            <p>3️⃣ الصق الأمر التالي واضغط Enter:</p>
+          </div>
+          <div class="code-box">
+            <code>bash &lt;(curl -s https://rtea.emadadel4-a0a.workers.dev/?rtea-steamos)</code>
+          </div>
+      </div>
+
+        <div class="tab-content" id="ps4">
+          <p>قريبا...</p>
+        </div>
+
+      </div>
+      
       
     </div>
 
@@ -65,7 +99,7 @@
       <div class="gallery-container">
 
         <div class="gallery-card">
-          <a href="assets/preview/help.png" target="_blank"><img class="gallery-img" src="assets/preview/help.png" alt="لقطة من تعريب ريد ديد" loading="lazy"></a>
+          <a href="assets/preview/help.png" target="_blank"><img class="gallery-img"  src="assets/preview/help.png" alt="لقطة من تعريب ريد ديد" loading="lazy"></a>
         </div>
 
         <div class="gallery-card">
@@ -94,7 +128,27 @@
           <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515c-.074.176-.143.35-.209.53a18.407 18.407 0 0 0-5.446 0 10.68 10.68 0 0 0-.21-.53 19.734 19.734 0 0 0-4.885 1.515c-2.952 4.385-3.757 8.67-3.361 12.86a20.103 20.103 0 0 0 6.007 3.015c.484-.652.918-1.342 1.297-2.07a12.964 12.964 0 0 1-2.043-.98c.171-.124.34-.252.504-.384a14.299 14.299 0 0 0 12.312 0c.165.132.334.26.505.384-.656.398-1.337.74-2.044.98.379.727.812 1.417 1.296 2.07a20.094 20.094 0 0 0 6.007-3.015c.457-4.718-.765-8.96-3.36-12.86zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/>
         </svg>
       </a>
+      </div>
     </div>
-  </div>
+
+      <script>
+      function openTab(evt, tabName) {
+        var i, content, buttons;
+
+        content = document.getElementsByClassName("tab-content");
+        for (i = 0; i < content.length; i++) {
+          content[i].classList.remove("active");
+        }
+
+        buttons = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < buttons.length; i++) {
+          buttons[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
+    </script>
+
 </body>
 </html>
