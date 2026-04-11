@@ -21,7 +21,6 @@
       height: 100%;
       object-fit: cover;
       z-index: -2;
-      filter: brightness(0.5) contrast(1.1);
     }
 
     body::before {
@@ -31,7 +30,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.7);
       z-index: -1;
     }
 
@@ -45,8 +44,7 @@
 
     .hero {
       text-align: center;
-      margin-top: 40px;
-      animation: fadeInUp 0.7s ease-out;
+      margin-top: 90px;
     }
 
     h1 {
@@ -97,11 +95,7 @@
     }
 
     .download-btn:hover {
-      background: linear-gradient(135deg, #e67e22, #c0392b);
-    }
-
-    .download-btn:active {
-      transform: translateY(2px);
+      background: rgb(161, 0, 0);
     }
 
     .gallery-section {
@@ -134,20 +128,13 @@
     .gallery-card {
       flex: 1;
       min-width: 150px;
-      max-width: 250px;
-      background: rgba(20, 20, 25, 0.75);
-      backdrop-filter: blur(8px);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      max-width: 200px;
+      border-radius: 5px;
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .gallery-card:hover {
-      transform: translateY(-12px) scale(1.01);
-      box-shadow: 0 24px 40px rgba(0, 0, 0, 0.6);
-      border-color: rgba(230, 126, 34, 0.6);
+      border: 2px solid red;
     }
 
     .gallery-img {
@@ -156,10 +143,6 @@
       display: block;
       transition: transform 0.5s ease;
       background-color: #1a1a2e;
-    }
-
-    .gallery-card:hover .gallery-img {
-      transform: scale(1.03);
     }
 
     .img-caption {
@@ -177,12 +160,10 @@
       position: relative;
       margin-top: 60px;
       padding: 20px 0;
-      background: rgba(0, 0, 0, 0.75);
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 45px;
-      z-index: 10;
     }
 
     .footer a {
@@ -193,12 +174,8 @@
       opacity: 0.85;
     }
 
-    .footer svg {
-      transition: filter 0.2s;
-    }
-
     .footer a:hover svg {
-      filter: drop-shadow(0 0 8px rgba(230,126,34,0.8));
+      filter: drop-shadow(0 0 8px rgba(161,126,34,0.8));
     }
 
     .tabs-container {
@@ -223,7 +200,7 @@
     }
 
     .tab-btn.active {
-      background: black;
+      background: rgb(161, 0, 0);
     }
 
     .tab-content {
