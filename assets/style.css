@@ -44,7 +44,7 @@
 
     .hero {
       text-align: center;
-      margin-top: 90px;
+      margin-top: 50px;
     }
 
     h1 {
@@ -134,7 +134,7 @@
     }
 
     .gallery-card:hover {
-      border: 2px solid red;
+      border: 1px solid red;
     }
 
     .gallery-img {
@@ -172,10 +172,6 @@
       justify-content: center;
       transition: all 0.25s ease;
       opacity: 0.85;
-    }
-
-    .footer a:hover svg {
-      filter: drop-shadow(0 0 8px rgba(161,126,34,0.8));
     }
 
     .tabs-container {
@@ -231,6 +227,11 @@
 
     .code-box code {
       color: white;
+    }
+    
+    a{
+      color: red ;
+      text-decoration: none;
     }
 
     @media (max-width: 900px) {
