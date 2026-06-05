@@ -3,7 +3,7 @@
 
 # ༺ تعريب ريد ديد ريدمبشن 2 ༻
 
-Redemption & Emad Adel 
+Redemption Team & Emad Adel 
 
 [تنزيل احدث نسخة من المثبت](https://github.com/emadadeldev/rtea/releases)
 
