@@ -30,7 +30,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.89);
       z-index: -1;
     }
 
@@ -234,6 +234,10 @@
       text-decoration: none;
     }
 
+    .copyright{
+      color: darkgray;
+    }
+
     @media (max-width: 900px) {
       h1 {
         font-size: 2.4rem;
@@ -287,8 +291,4 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
