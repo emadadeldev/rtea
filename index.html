@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Red Dead Redemption 2 تعريب</title>
-  
+
   <!-- ===== BASIC SEO ===== -->
   <meta name="title" content="Red Dead Redemption 2 تعريب">
   <meta name="description" content="تعريب Red Dead Redemption 2">
@@ -13,7 +13,7 @@
   <meta name="robots" content="index, follow">
   <meta name="language" content="Arabic">
   <meta name="revisit-after" content="7 days">
-  
+
   <!-- ===== AUTHOR LINKS ===== -->
   <link rel="me" href="https://github.com/emadadeldev">
   <link rel="author" href="https://github.com/emadadeldev">
@@ -38,7 +38,7 @@
     "url": "https://emadadeldev.github.io/rtea/"
   }
   </script>
-  
+
   <!-- ===== OPEN GRAPH ===== -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://emadadeldev.github.io/rtea/">
@@ -47,36 +47,41 @@
   <meta property="og:image" content="https://emadadeldev.github.io/rtea/assets/preview/pausemenu.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  
+
   <!-- ===== TWITTER ===== -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://emadadeldev.github.io/rtea/">
   <meta name="twitter:title" content="Red Dead Redemption 2 تعريب">
   <meta name="twitter:description" content="تعريب Red Dead Redemption 2 عماد عادل">
   <meta name="twitter:image" content="https://emadadeldev.github.io/rtea/assets/preview/twitter-image.jpg">
-  
+
   <!-- ===== CANONICAL & ICONS ===== -->
   <link rel="canonical" href="https://emadadeldev.github.io/rtea/">
   <link rel="icon" type="image/png" href="assets/preview/RDR2.png">
   <link rel="apple-touch-icon" href="assets/preview/RDR2.png">
-  
+
   <!-- ===== THEME ===== -->
   <meta name="theme-color" content="#e67e22">
   <meta name="msapplication-navbutton-color" content="#e67e22">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="format-detection" content="telephone=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  
+
   <!-- ===== FONTS ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+
   <style>
     /* ===== RESET & BASE ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -116,24 +121,39 @@
       opacity: 0.35;
     }
 
-    /* ===== MAIN WRAPPER - CENTERED ===== */
-    .main-wrapper {
+    /* ===== SCROLL SNAP CONTAINER ===== */
+    .scroll-container {
       position: relative;
       z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px 24px 40px;
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      /* ===== HIDE SCROLLBAR ===== */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+    .section {
+      height: 100vh;
+      scroll-snap-align: start;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      padding: 20px 24px;
+      position: relative;
+      overflow-y: auto;
     }
 
-    /* ===== HERO ===== */
-    .hero {
+    /* ===== SECTION 1: HERO & DOWNLOAD ===== */
+    .section-download .hero {
       text-align: center;
-      padding: 20px 0 10px;
+      padding: 10px 0;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -142,10 +162,12 @@
 
     .subtitle img {
       height: auto;
+      max-width: 530px;
+      width: 100%;
       filter: drop-shadow(0 4px 20px rgba(230, 126, 34, 0.3));
     }
 
-    /* ===== TABS ===== */
+    /* ===== TABS (GENERAL) ===== */
     .tabs-container {
       border-radius: 16px;
       padding: 28px 24px;
@@ -201,6 +223,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ===== DOWNLOAD SECTION ===== */
     .download-btn {
       display: inline-block;
       background: linear-gradient(135deg, #c0392b, #e74c3c);
@@ -217,18 +240,6 @@
     .download-btn:hover {
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 6px 30px rgba(192, 57, 43, 0.4);
-    }
-
-    .steps p {
-      font-size: 15px;
-      color: #d0c8b8;
-      text-align: right;
-      line-height: 2;
-      padding-right: 4px;
-    }
-
-    .steps b {
-      color: red;
     }
 
     .code-box {
@@ -249,14 +260,94 @@
       word-break: break-all;
     }
 
+    .steps p {
+      font-size: 15px;
+      color: #d0c8b8;
+      text-align: right;
+      line-height: 2;
+      padding-right: 4px;
+    }
+
+    .steps b {
+      color: red;
+    }
+
+    /* ===== DOWNLOAD COUNTER ===== */
+    .download-counter {
+      margin-top: 20px;
+      padding: 10px 28px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50px;
+      border: 1px solid rgba(230, 126, 34, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: #f0e6d3;
+    }
+
+    .download-counter .number {
+      font-weight: 700;
+      color: #e67e22;
+      font-size: 18px;
+      direction: ltr;
+      unicode-bidi: plaintext;
+    }
+
+    .download-counter .icon {
+      font-size: 20px;
+    }
+
+    /* ===== SCROLL DOWN INDICATOR ===== */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 1;
+      transition: opacity 0.8s ease;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .scroll-indicator.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scroll-indicator .arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid rgba(255, 255, 255, 0.5);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      transform: rotate(45deg);
+      animation: bounceArrow 2s infinite;
+    }
+
+    .scroll-indicator .label {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.5; }
+      50% { transform: rotate(45deg) translate(8px, 8px); opacity: 1; }
+    }
+
     /* ===== GALLERY ===== */
     .gallery-section {
-      margin: 32px auto 16px;
       max-width: 600px;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 20px;
     }
 
     .gallery-title {
@@ -264,7 +355,7 @@
       font-weight: 700;
       color: red;
       display: inline-block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       position: relative;
     }
 
@@ -317,12 +408,106 @@
       transform: scale(1.06);
     }
 
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      backdrop-filter: blur(4px);
+      padding: 20px;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 95%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .lightbox .close-btn {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 2.8rem;
+      color: #ccc;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-weight: 300;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+    .lightbox .close-btn:hover {
+      color: #fff;
+    }
+    .lightbox .counter {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      font-family: 'Cairo', sans-serif;
+      background: rgba(0,0,0,0.5);
+      padding: 6px 18px;
+      border-radius: 40px;
+      letter-spacing: 1px;
+    }
+    .lightbox .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.3);
+      font-size: 3rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0 20px;
+      transition: color 0.2s;
+      user-select: none;
+    }
+    .lightbox .nav-arrow:hover {
+      color: #fff;
+    }
+    .lightbox .prev {
+      left: 10px;
+    }
+    .lightbox .next {
+      right: 10px;
+    }
+    @media (max-width: 600px) {
+      .lightbox .nav-arrow {
+        font-size: 2rem;
+        padding: 0 10px;
+      }
+      .lightbox .close-btn {
+        top: 10px;
+        left: 16px;
+        font-size: 2rem;
+      }
+      .lightbox .counter {
+        bottom: 16px;
+        font-size: 0.7rem;
+        padding: 4px 12px;
+      }
+    }
+
     /* ===== COMMENTS SECTION ===== */
     .comments-section {
       max-width: 750px;
       width: 100%;
-      margin: 24px auto 16px;
-      padding: 16px 20px;
+      padding: 20px 24px;
       text-align: center;
       border-radius: 12px;
       background: rgba(0, 0, 0, 0.3);
@@ -416,7 +601,7 @@
       justify-content: center;
       align-items: center;
       gap: 18px;
-      padding: 20px 0 8px;
+      padding: 16px 0 10px;
       flex-wrap: wrap;
       width: 100%;
     }
@@ -455,7 +640,7 @@
       color: white;
       font-size: 13px;
       line-height: 1.6;
-      padding: 6px 0 2px;
+      padding: 4px 0 2px;
       width: 100%;
     }
 
@@ -463,15 +648,66 @@
       color: #e67e22;
     }
 
+    /* ===== NAVIGATION DOTS (SIDE) ===== */
+    .nav-dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-dot:hover {
+      background: rgba(230, 126, 34, 0.4);
+      border-color: #e67e22;
+    }
+
+    .nav-dot.active {
+      background: red;
+      border-color: #e74c3c;
+      transform: scale(1.25);
+      box-shadow: 0 0 20px rgba(192, 57, 43, 0.3);
+    }
+
+    .nav-dot .tooltip {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: #f0e6d3;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .nav-dot:hover .tooltip {
+      opacity: 1;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .main-wrapper {
-        padding: 12px 14px 24px;
-        min-height: 100vh;
-      }
-
-      .hero {
-        padding: 12px 0 6px;
+      .section {
+        padding: 16px 14px;
       }
 
       .subtitle img {
@@ -494,6 +730,25 @@
         font-size: 16px;
       }
 
+      .download-counter {
+        font-size: 13px;
+        padding: 8px 18px;
+        margin-top: 16px;
+      }
+
+      .download-counter .number {
+        font-size: 16px;
+      }
+
+      .scroll-indicator .arrow {
+        width: 20px;
+        height: 20px;
+      }
+
+      .scroll-indicator .label {
+        font-size: 10px;
+      }
+
       .gallery-container {
         gap: 8px;
         max-width: 100%;
@@ -503,9 +758,12 @@
         font-size: 16px;
       }
 
+      .gallery-section {
+        margin-top: 16px;
+      }
+
       .comments-section {
-        padding: 14px 14px 16px;
-        margin: 18px 0 12px;
+        padding: 16px 14px;
       }
 
       .comment-text {
@@ -513,28 +771,35 @@
         line-height: 1.7;
       }
 
-      .comment-text::before,
-      .comment-text::after {
-        font-size: 18px;
-      }
-
       .comment-display {
         min-height: 65px;
-        padding: 8px 10px;
       }
 
       .comments-section h3 {
         font-size: 18px;
-        margin-bottom: 10px;
       }
 
       .code-box code {
         font-size: 12px;
       }
 
+      .nav-dots {
+        right: 8px;
+        gap: 10px;
+      }
+
+      .nav-dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .nav-dot .tooltip {
+        display: none;
+      }
+
       .footer {
         gap: 14px;
-        padding: 14px 0 6px;
+        padding: 12px 0 8px;
       }
 
       .footer a {
@@ -553,9 +818,8 @@
     }
 
     @media (max-width: 480px) {
-      .main-wrapper {
-        padding: 10px 10px 20px;
-        min-height: 100vh;
+      .section {
+        padding: 12px 10px;
       }
 
       .tab-btn {
@@ -568,10 +832,33 @@
         font-size: 14px;
       }
 
+      .download-counter {
+        font-size: 11px;
+        padding: 6px 14px;
+        margin-top: 12px;
+      }
+
+      .download-counter .number {
+        font-size: 14px;
+      }
+
+      .scroll-indicator .arrow {
+        width: 16px;
+        height: 16px;
+      }
+
+      .scroll-indicator .label {
+        font-size: 9px;
+      }
+
       .gallery-container {
         grid-template-columns: repeat(3, 1fr);
         gap: 6px;
         max-width: 100%;
+      }
+
+      .gallery-section {
+        margin-top: 12px;
       }
 
       .comment-text {
@@ -579,31 +866,20 @@
         line-height: 1.6;
       }
 
-      .comment-text::before,
-      .comment-text::after {
-        font-size: 15px;
-      }
-
       .comment-display {
         min-height: 50px;
-        padding: 6px 8px;
       }
 
       .comments-section h3 {
         font-size: 16px;
-        margin-bottom: 8px;
       }
 
       .comments-section {
-        padding: 10px 10px 12px;
+        padding: 12px 10px;
       }
 
       .tabs {
         gap: 4px;
-      }
-
-      .steps p {
-        font-size: 13px;
       }
 
       .code-box {
@@ -618,8 +894,19 @@
         max-width: 180px;
       }
 
+      .nav-dots {
+        right: 4px;
+        gap: 8px;
+      }
+
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+      }
+
       .footer {
         gap: 12px;
+        padding: 10px 0 6px;
       }
 
       .footer a {
@@ -634,6 +921,7 @@
 
       .copyright {
         font-size: 11px;
+        padding: 2px 0;
       }
     }
   </style>
@@ -647,110 +935,144 @@
     <div class="bg-slide" style="background-image: url('https://w.wallhaven.cc/full/wq/wallhaven-wqo17q.jpg');"></div>
   </div>
 
-  <div class="main-wrapper">
-    <div class="hero">
+  <!-- ===== SIDE NAVIGATION DOTS ===== -->
+  <nav class="nav-dots" id="navDots" role="navigation" aria-label="التنقل بين الأقسام">
+    <a href="#section-download" class="nav-dot active" data-target="section-download" aria-label="التحميل">
+      <span class="tooltip">التحميل</span>
+    </a>
+    <a href="#section-feedback" class="nav-dot" data-target="section-feedback" aria-label="آراء اللاعبين">
+      <span class="tooltip">آراء اللاعبين</span>
+    </a>
+  </nav>
 
-      <div class="subtitle">
-        <img src="assets/preview/RDR2.png" width="530" height="auto" alt="Red Dead Redemption 2 تعريب">
-      </div>
+  <!-- ===== SCROLL CONTAINER ===== -->
+  <div class="scroll-container" id="scrollContainer">
 
-      <div class="tabs-container">
-        <div class="tabs">
-          <button class="tab-btn active" onclick="openTab(event, 'pc')">PC</button>
-          <button class="tab-btn" onclick="openTab(event, 'steam')">Steam Deck</button>
-          <button class="tab-btn" onclick="openTab(event, 'ps4')">PS4</button>
+    <!-- ===== SECTION 1: DOWNLOAD & GALLERY ===== -->
+    <section class="section section-download" id="section-download">
+      <div class="hero">
+        <div class="subtitle">
+          <img src="assets/preview/RDR2.png" width="530" height="auto" alt="Red Dead Redemption 2 تعريب">
         </div>
 
-        <div class="tab-content active" id="pc">
-          <a href="https://github.com/emadadeldev/rtea/releases/download/1.4/RTEA.v1.4.exe" target="_blank" class="download-btn">
-            تحميل المثبت الآن
-          </a>
-        </div>
-
-        <div class="tab-content" id="steam">
-          <div class="steps">
-            <p>1️⃣ افتح مجلد اللعبة</p>
-            <p>2️⃣ كلك يمين واضغط <b>"Open Terminal here"</b></p>
-            <p>3️⃣ الصق الأمر التالي واضغط Enter:</p>
+        <div class="tabs-container">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'pc-download')">PC</button>
+            <button class="tab-btn" onclick="openTab(event, 'steam-download')">Steam Deck</button>
+            <button class="tab-btn" onclick="openTab(event, 'ps4-download')">PS4</button>
           </div>
-          <div class="code-box">
-            <code>bash &lt;(curl -s https://rtea.emadadel4-a0a.workers.dev/?rtea-steamos)</code>
+
+          <div class="tab-content active" id="pc-download">
+            <a href="https://github.com/emadadeldev/rtea/releases/download/1.4/RTEA.v1.4.exe" target="_blank" class="download-btn">
+              تحميل المثبت الآن
+            </a>
+            <p style="color: #a09080; font-size: 14px; margin-top: 10px;">أنقل المثبت إلى مجلد اللعبة وقم بتشغيله</p>
+          </div>
+
+          <div class="tab-content" id="steam-download">
+            <div class="steps">
+              <p>1️⃣ افتح مجلد اللعبة</p>
+              <p>2️⃣ كلك يمين واضغط <b>"Open Terminal here"</b></p>
+              <p>3️⃣ الصق الأمر التالي واضغط Enter:</p>
+              <div class="code-box">
+                <code>bash &lt;(curl -s https://rtea.emadadel4-a0a.workers.dev/?rtea-steamos)</code>
+              </div>
+              <p>4️⃣ انتظر حتى الانتهاء ثم شغل اللعبة.</p>
+            </div>
+          </div>
+
+          <div class="tab-content" id="ps4-download">
+            <p style="color: #a09080; font-size: 15px; padding: 8px 0; text-align: center;">⏳ قريباً...</p>
           </div>
         </div>
 
-        <div class="tab-content" id="ps4">
-          <p style="color: #a09080; font-size: 15px; padding: 8px 0; text-align: center;">⏳ قريباً...</p>
+        <!-- ===== DOWNLOAD COUNTER ===== -->
+        <div class="download-counter" id="downloadCounter">
+          <span class="icon"></span>
+          <span>عدد تحميلات التعريب:</span>
+          <span class="number" id="downloadCount">0</span>
         </div>
-      </div>
 
-    </div>
+        <!-- ===== GALLERY ===== -->
+        <div class="gallery-section">
+          <span class="gallery-title">📸 صور من اللعبة</span>
+          <div class="gallery-container" id="galleryContainer">
+            <div class="gallery-card" data-img="assets/preview/help.png">
+              <img class="gallery-img" src="assets/preview/help.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
+            </div>
+            <div class="gallery-card" data-img="assets/preview/menu.png">
+              <img class="gallery-img" src="assets/preview/menu.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
+            </div>
+            <div class="gallery-card" data-img="assets/preview/pausemenu.png">
+              <img class="gallery-img" src="assets/preview/pausemenu.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
+            </div>
+          </div>
+        </div>
 
-    <!-- ===== GALLERY ===== -->
-    <div class="gallery-section">
-      <div style="text-align: center;">
-        <span class="gallery-title">📸 صور من اللعبة</span>
-      </div>
+        <!-- ===== SCROLL DOWN INDICATOR ===== -->
+        <div class="scroll-indicator" id="scrollIndicator">
+          <span class="label">اسحب للأسفل</span>
+          <div class="arrow"></div>
+        </div>
 
-      <div class="gallery-container">
-        <div class="gallery-card">
-          <a href="assets/preview/help.png" target="_blank">
-            <img class="gallery-img" src="assets/preview/help.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+
+          
+        <div class="copyright">
+          تم برمجة جميع الأدوات وتعديل المحرك بواسطة المطور <strong>عماد عادل</strong>.
+        </div>
+
+          <a href="https://www.github.com/emadadeldev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://discord.gg/j4ctCTgd6S" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515c-.074.176-.143.35-.209.53a18.407 18.407 0 0 0-5.446 0 10.68 10.68 0 0 0-.21-.53 19.734 19.734 0 0 0-4.885 1.515c-2.952 4.385-3.757 8.67-3.361 12.86a20.103 20.103 0 0 0 6.007 3.015c.484-.652.918-1.342 1.297-2.07a12.964 12.964 0 0 1-2.043-.98c.171-.124.34-.252.504-.384a14.299 14.299 0 0 0 12.312 0c.165.132.334.26.505.384-.656.398-1.337.74-2.044.98.379.727.812 1.417 1.296 2.07a20.094 20.094 0 0 0 6.007-3.015c.457-4.718-.765-8.96-3.36-12.86zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/>
+            </svg>
+          </a>
+          <a href="https://discord.gg/SM3zf8YPAv" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515c-.074.176-.143.35-.209.53a18.407 18.407 0 0 0-5.446 0 10.68 10.68 0 0 0-.21-.53 19.734 19.734 0 0 0-4.885 1.515c-2.952 4.385-3.757 8.67-3.361 12.86a20.103 20.103 0 0 0 6.007 3.015c.484-.652.918-1.342 1.297-2.07a12.964 12.964 0 0 1-2.043-.98c.171-.124.34-.252.504-.384a14.299 14.299 0 0 0 12.312 0c.165.132.334.26.505.384-.656.398-1.337.74-2.044.98.379.727.812 1.417 1.296 2.07a20.094 20.094 0 0 0 6.007-3.015c.457-4.718-.765-8.96-3.36-12.86zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/>
+            </svg>
           </a>
         </div>
-        <div class="gallery-card">
-          <a href="assets/preview/menu.png" target="_blank">
-            <img class="gallery-img" src="assets/preview/menu.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
-          </a>
-        </div>
-        <div class="gallery-card">
-          <a href="assets/preview/pausemenu.png" target="_blank">
-            <img class="gallery-img" src="assets/preview/pausemenu.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
-          </a>
-        </div>
+
       </div>
-    </div>
+    </section>
 
-    <!-- ===== COMMENTS SECTION ===== -->
-    <div class="comments-section">
-      <h3>💬 آراء اللاعبين</h3>
+    <!-- ===== SECTION 2: COMMENTS & FOOTER ===== -->
+    <section class="section section-feedback" id="section-feedback">
+      <div class="comments-section">
+        <h3>💬 آراء اللاعبين</h3>
 
-      <div class="comment-slider">
-        <div class="comment-display">
-          <span class="comment-text" id="commentText">افضل تعريب على الاطلاق</span>
+        <div class="comment-slider">
+          <div class="comment-display">
+            <span class="comment-text" id="commentText">افضل تعريب على الاطلاق</span>
+          </div>
         </div>
+
+        <div class="comment-dots" id="dotsContainer"></div>
+        <div class="comment-counter" id="commentCounter">1 / 3</div>
       </div>
 
-      <div class="comment-dots" id="dotsContainer"></div>
-      <div class="comment-counter" id="commentCounter">1 / 3</div>
-    </div>
-
-    <!-- ===== FOOTER ===== -->
-    <div class="footer">
-      <a href="https://www.github.com/emadadeldev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-      </a>
-      <a href="https://discord.gg/j4ctCTgd6S" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515c-.074.176-.143.35-.209.53a18.407 18.407 0 0 0-5.446 0 10.68 10.68 0 0 0-.21-.53 19.734 19.734 0 0 0-4.885 1.515c-2.952 4.385-3.757 8.67-3.361 12.86a20.103 20.103 0 0 0 6.007 3.015c.484-.652.918-1.342 1.297-2.07a12.964 12.964 0 0 1-2.043-.98c.171-.124.34-.252.504-.384a14.299 14.299 0 0 0 12.312 0c.165.132.334.26.505.384-.656.398-1.337.74-2.044.98.379.727.812 1.417 1.296 2.07a20.094 20.094 0 0 0 6.007-3.015c.457-4.718-.765-8.96-3.36-12.86zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/>
-        </svg>
-      </a>
-      <a href="https://discord.gg/SM3zf8YPAv" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515c-.074.176-.143.35-.209.53a18.407 18.407 0 0 0-5.446 0 10.68 10.68 0 0 0-.21-.53 19.734 19.734 0 0 0-4.885 1.515c-2.952 4.385-3.757 8.67-3.361 12.86a20.103 20.103 0 0 0 6.007 3.015c.484-.652.918-1.342 1.297-2.07a12.964 12.964 0 0 1-2.043-.98c.171-.124.34-.252.504-.384a14.299 14.299 0 0 0 12.312 0c.165.132.334.26.505.384-.656.398-1.337.74-2.044.98.379.727.812 1.417 1.296 2.07a20.094 20.094 0 0 0 6.007-3.015c.457-4.718-.765-8.96-3.36-12.86zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/>
-        </svg>
-      </a>
-    </div>
-
-    <div class="copyright">
-      تم برمجة جميع الأدوات وتعديل المحرك بواسطة المطور <strong>عماد عادل</strong>.
-    </div>
+    </section>
 
   </div>
 
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <button class="close-btn" id="closeLightbox">✕</button>
+    <button class="nav-arrow prev" id="prevImage">‹</button>
+    <button class="nav-arrow next" id="nextImage">›</button>
+    <img id="lightboxImg" src="" alt="صورة مكبرة">
+    <span class="counter" id="imageCounter">1 / 3</span>
+  </div>
+
   <script>
-    // ===== TABS =====
+    // ===== TABS FOR DOWNLOAD =====
     function openTab(evt, tabName) {
       var i, content, buttons;
       content = document.getElementsByClassName("tab-content");
@@ -778,7 +1100,144 @@
 
     setInterval(nextSlide, SLIDE_INTERVAL);
 
-    // ===== COMMENTS SLIDER WITH AUTO-PLAY =====
+    // ===== SCROLL SNAP NAVIGATION DOTS =====
+    const sections = document.querySelectorAll('.section');
+    const navDots = document.querySelectorAll('.nav-dot');
+    const scrollContainer = document.getElementById('scrollContainer');
+    const scrollIndicator = document.getElementById('scrollIndicator');
+
+    function updateActiveDot() {
+      const scrollTop = scrollContainer.scrollTop;
+      const windowHeight = scrollContainer.clientHeight;
+
+      let activeIndex = 0;
+      sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        if (scrollTop >= sectionTop - windowHeight / 2) {
+          activeIndex = index;
+        }
+      });
+
+      navDots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
+      });
+
+      // Hide scroll indicator when user scrolls down or is on second section
+      if (activeIndex === 1 || scrollTop > windowHeight * 0.1) {
+        scrollIndicator.classList.add('hidden');
+      } else {
+        scrollIndicator.classList.remove('hidden');
+      }
+    }
+
+    scrollContainer.addEventListener('scroll', updateActiveDot);
+
+    navDots.forEach((dot) => {
+      dot.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target');
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Click on indicator to scroll down
+    scrollIndicator.addEventListener('click', function() {
+      const nextSection = sections[1];
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    setTimeout(updateActiveDot, 100);
+
+    // ===== FETCH DOWNLOAD COUNT =====
+    async function fetchDownloadCount() {
+      const countElement = document.getElementById('downloadCount');
+      try {
+        const response = await fetch('https://rtea.emadadel4-a0a.workers.dev/?count');
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.text();
+        const formatted = Number(data).toLocaleString();
+        countElement.textContent = formatted;
+      } catch (error) {
+        console.error('Error fetching download count:', error);
+        countElement.textContent = '39,693';
+      }
+    }
+
+    fetchDownloadCount();
+
+    // ===== LIGHTBOX =====
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('prevImage');
+    const nextBtn = document.getElementById('nextImage');
+    const counter = document.getElementById('imageCounter');
+
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    const imageSources = [];
+    galleryCards.forEach(card => {
+      const img = card.querySelector('.gallery-img');
+      if (img) imageSources.push(img.getAttribute('src'));
+    });
+    let currentImageIndex = 0;
+
+    function openLightbox(index) {
+      if (index < 0) index = imageSources.length - 1;
+      if (index >= imageSources.length) index = 0;
+      currentImageIndex = index;
+      lightboxImg.setAttribute('src', imageSources[currentImageIndex]);
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      updateCounter();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateCounter() {
+      counter.textContent = `${currentImageIndex + 1} / ${imageSources.length}`;
+    }
+
+    function showPrev() {
+      openLightbox(currentImageIndex - 1);
+    }
+
+    function showNext() {
+      openLightbox(currentImageIndex + 1);
+    }
+
+    galleryCards.forEach((card, index) => {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        openLightbox(index);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+
+    // ===== COMMENTS SLIDER =====
     const comments = [
       "لعبة ضخمة و تعريبها استغرق منكم الوقت الكثير نشكركم على جهودكم الجبارة في هذا التعريب الاحترافي و هذا اقل شيء ممكن نقدمه هو الشكر والتقدير والاحترام لكل من عمل في هذا التعريب",
       "الصراحه اشكركم عالتعريب والله اعطى طعم اكثر للعبه ومتعه اكثر بكثير اعرف شوي انقليزي افهم بس والله بالعربي دخلت جو مع اللعبه اكثر اشكركم جميعا والله يعوضكم خير على المجهودات اللي تقدموها",
@@ -786,15 +1245,14 @@
       "الترجمة أغلبها ممتازة وسلسة وما حسيت اكو شي يأثر على تجربة اللعب وحتى النواقص بسيطة جدا مقارنة بحجم الشغل"
     ];
 
-    let currentIndex = 0;
+    let currentCommentIndex = 0;
     let autoPlayInterval = null;
     const AUTO_PLAY_DELAY = 9500;
 
     const commentText = document.getElementById('commentText');
-    const counter = document.getElementById('commentCounter');
+    const counterElem = document.getElementById('commentCounter');
     const dotsContainer = document.getElementById('dotsContainer');
 
-    // Build dots
     comments.forEach((_, i) => {
       const dot = document.createElement('span');
       dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -810,17 +1268,17 @@
     const dots = document.querySelectorAll('.dot');
 
     function goToComment(index) {
-      currentIndex = (index + comments.length) % comments.length;
-      commentText.textContent = comments[currentIndex];
-      counter.textContent = `${currentIndex + 1} / ${comments.length}`;
+      currentCommentIndex = (index + comments.length) % comments.length;
+      commentText.textContent = comments[currentCommentIndex];
+      counterElem.textContent = `${currentCommentIndex + 1} / ${comments.length}`;
 
       dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentIndex);
+        dot.classList.toggle('active', i === currentCommentIndex);
       });
     }
 
     function nextComment() {
-      goToComment(currentIndex + 1);
+      goToComment(currentCommentIndex + 1);
     }
 
     function startAutoPlay() {
@@ -835,16 +1293,12 @@
       }
     }
 
-    // Pause on hover
     const commentsSection = document.querySelector('.comments-section');
     commentsSection.addEventListener('mouseenter', stopAutoPlay);
     commentsSection.addEventListener('mouseleave', startAutoPlay);
-
-    // Pause on touch (mobile)
     commentsSection.addEventListener('touchstart', stopAutoPlay);
     commentsSection.addEventListener('touchend', startAutoPlay);
 
-    // Initialize and start
     goToComment(0);
     startAutoPlay();
   </script>
