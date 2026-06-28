@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -32,25 +31,495 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="format-detection" content="telephone=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #0a0908;
+      color: #f0e6d3;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ===== BACKGROUND SLIDESHOW ===== */
+    .bg-slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      pointer-events: none;
+    }
+
+    .bg-slide.active {
+      opacity: 0.35;
+    }
+
+    /* ===== MAIN WRAPPER ===== */
+    .main-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 24px 40px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 30px 0 20px;
+    }
+
+    .subtitle img {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 20px rgba(230, 126, 34, 0.3));
+    }
+
+    /* ===== TABS ===== */
+    .tabs-container {
+      border-radius: 20px;
+      padding: 30px 28px;
+      margin: 24px auto 0;
+      max-width: 700px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #222;
+      border: 2px solid transparent;
+      color: white;
+      padding: 10px 32px;
+      border-radius: 50px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .tab-btn.active {
+      background: #c0392b;
+      color: #fff;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #c0392b, #e74c3c);
+      color: #fff;
+      padding: 16px 48px;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .steps p {
+      font-size: 16px;
+      color: #d0c8b8;
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    .steps b {
+      color: #e67e22;
+    }
+
+    .code-box {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(230, 126, 34, 0.2);
+      border-radius: 12px;
+      padding: 16px 0px 16px 16px;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-box code {
+      color: #f0c080;
+      font-family: monospace;
+      font-size: 15px;
+      word-break: break-all;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-section {
+      margin: 40px auto 20px;
+      max-width: 700px;
+    }
+
+    .gallery-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #e67e22;
+      display: inline-block;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .gallery-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e67e22, transparent);
+      border-radius: 2px;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 4px 0;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .gallery-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.3);
+      aspect-ratio: 16/9;
+      cursor: pointer;
+    }
+
+    .gallery-card:hover {
+      transform: scale(1.05);
+      border-color: rgba(230, 126, 34, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-card:hover .gallery-img {
+      transform: scale(1.08);
+    }
+
+    /* ===== COMMENTS SECTION ===== */
+    .comments-section {
+      max-width: 750px;
+      margin: 30px auto 20px;
+      padding: 10px 10px;
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    .comments-section h3 {
+      color: #e67e22;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .comment-slider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 0;
+    }
+
+    .comment-display {
+      flex: 1;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+    }
+
+    .comment-text {
+      color: #f0e6d3;
+      line-height: 1.6;
+      transition: opacity 0.25s ease;
+      font-style: italic;
+      text-align: right;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .comment-text::before {
+      content: '"';
+      color: white;
+    }
+
+    .comment-text::after {
+      content: '"';
+      color: white;
+      margin-right: 4px;
+    }
+
+    .comment-counter {
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    .comment-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .dot.active {
+      background: #e67e22;
+      transform: scale(1.3);
+    }
+
+    .dot:hover {
+      background: rgba(230, 126, 34, 0.5);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer a:hover {
+      background: rgba(230, 126, 34, 0.2);
+      border-color: #e67e22;
+      transform: translateY(-3px);
+    }
+
+    .footer svg {
+      width: 22px;
+      height: 22px;
+      fill: darkgray;
+      transition: fill 0.3s ease;
+    }
+
+    .footer a:hover svg {
+      fill: #e67e22;
+    }
+
+    .copyright {
+      text-align: center;
+      color: white;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .main-wrapper {
+        padding: 12px 14px 24px;
+      }
+
+      .tabs-container {
+        padding: 16px 12px;
+        margin: 12px 0;
+        border-radius: 14px;
+      }
+
+      .tab-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+      }
+
+      .download-btn {
+        padding: 12px 28px;
+        font-size: 16px;
+      }
+
+      .gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        max-width: 100%;
+      }
+
+      .gallery-title {
+        font-size: 17px;
+      }
+
+      .comments-section {
+        padding: 12px 10px;
+        margin: 16px 0 12px;
+      }
+
+      .comment-text {
+        font-size: 18px;
+      }
+
+      .comment-text::before,
+      .comment-text::after {
+        font-size: 24px;
+      }
+
+      .comment-display {
+        min-height: 50px;
+        padding: 8px 10px;
+      }
+
+      .comments-section h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+
+      .code-box code {
+        font-size: 12px;
+      }
+
+      .footer {
+        gap: 14px;
+        padding: 16px 0 8px;
+      }
+
+      .footer a {
+        width: 36px;
+        height: 36px;
+      }
+
+      .footer svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tab-btn {
+        padding: 4px 12px;
+        font-size: 11px;
+      }
+
+      .download-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+
+      .gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .comment-text {
+        font-size: 15px;
+      }
+
+      .comment-text::before,
+      .comment-text::after {
+        font-size: 20px;
+      }
+
+      .comment-display {
+        min-height: 40px;
+        padding: 6px 8px;
+      }
+
+      .comments-section h2 {
+        font-size: 17px;
+        margin-bottom: 10px;
+      }
+
+      .tabs {
+        gap: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <img src="assets/bg.webp" alt="تعريب ريد ديد رديمبشن 2" class="bg-img" loading="eager">
+  <!-- ===== BACKGROUND SLIDESHOW ===== -->
+  <div class="bg-slideshow" id="bgSlideshow">
+    <div class="bg-slide active" style="background-image: url('assets/bg.webp');"></div>
+    <div class="bg-slide" style="background-image: url('https://w.wallhaven.cc/full/vg/wallhaven-vg9x7l.jpg');"></div>
+    <div class="bg-slide" style="background-image: url('https://w.wallhaven.cc/full/zx/wallhaven-zxkgeg.jpg');"></div>
+  </div>
 
   <div class="main-wrapper">
     <div class="hero">
 
       <div class="subtitle">
-          <img src="assets/preview/RDR2.png" width="auto" height="150" alt="">
+        <img src="assets/preview/RDR2.png" width="350" height="auto" alt="Red Dead Redemption 2 تعريب">
       </div>
 
-
       <div class="tabs-container">
-
         <div class="tabs">
           <button class="tab-btn active" onclick="openTab(event, 'pc')">PC</button>
           <button class="tab-btn" onclick="openTab(event, 'steam')">Steam Deck</button>
@@ -58,12 +527,12 @@
         </div>
 
         <div class="tab-content active" id="pc">
-                <a href="https://github.com/emadadeldev/rtea/releases/download/1.4/RTEA.v1.4.exe" target="_blank" class="download-btn">
-          تحميل المثبت الآن
+          <a href="https://github.com/emadadeldev/rtea/releases/download/1.4/RTEA.v1.4.exe" target="_blank" class="download-btn">
+            تحميل المثبت الآن
           </a>
         </div>
 
-      <div class="tab-content" id="steam">
+        <div class="tab-content" id="steam">
           <div class="steps">
             <p>1️⃣ افتح مجلد اللعبة</p>
             <p>2️⃣ كلك يمين واضغط <b>"Open Terminal here"</b></p>
@@ -72,80 +541,178 @@
           <div class="code-box">
             <code>bash &lt;(curl -s https://rtea.emadadel4-a0a.workers.dev/?rtea-steamos)</code>
           </div>
-      </div>
-
-        <div class="tab-content" id="ps4">
-          <p>قريبا...</p>
         </div>
 
+        <div class="tab-content" id="ps4">
+          <p style="color: #a09080; font-size: 16px; padding: 10px 0;">⏳ قريباً...</p>
+        </div>
       </div>
-      
-      
+
     </div>
 
+    <!-- ===== GALLERY - Small Images ===== -->
     <div class="gallery-section">
       <div style="text-align: center;">
-        <span class="gallery-title">📸 صور من داخل اللعبة</span>
+        <span class="gallery-title">📸 صور من اللعبة</span>
       </div>
 
       <div class="gallery-container">
-
         <div class="gallery-card">
-          <a href="assets/preview/help.png" target="_blank"><img class="gallery-img"  src="assets/preview/help.png" alt="لقطة من تعريب ريد ديد" loading="lazy"></a>
+          <a href="assets/preview/help.png" target="_blank">
+            <img class="gallery-img" src="assets/preview/help.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
+          </a>
         </div>
-
         <div class="gallery-card">
-          <a href="assets/preview/menu.png" target="_blank"><img class="gallery-img" src="assets/preview/menu.png" alt="لقطة من تعريب ريد ديد" loading="lazy"></a>
+          <a href="assets/preview/menu.png" target="_blank">
+            <img class="gallery-img" src="assets/preview/menu.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
+          </a>
         </div>
-
         <div class="gallery-card">
-          <a href="assets/preview/pausemenu.png" target="_blank"><img class="gallery-img" src="assets/preview/pausemenu.png" alt="لقطة من تعريب ريد ديد" loading="lazy"></a>
+          <a href="assets/preview/pausemenu.png" target="_blank">
+            <img class="gallery-img" src="assets/preview/pausemenu.png" alt="لقطة من تعريب ريد ديد" loading="lazy">
+          </a>
         </div>
       </div>
     </div>
 
+    <!-- ===== COMMENTS SECTION ===== -->
+    <div class="comments-section">
+      <h3>💬 آراء اللاعبين</h3>
+
+      <div class="comment-slider">
+        <div class="comment-display">
+          <span class="comment-text" id="commentText">افضل تعريب على الاطلاق</span>
+        </div>
+      </div>
+
+      <div class="comment-dots" id="dotsContainer"></div>
+      <div class="comment-counter" id="commentCounter">1 / 3</div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
     <div class="footer">
       <a href="https://www.github.com/emadadeldev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
       </a>
       <a href="https://discord.gg/j4ctCTgd6S" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
           <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515c-.074.176-.143.35-.209.53a18.407 18.407 0 0 0-5.446 0 10.68 10.68 0 0 0-.21-.53 19.734 19.734 0 0 0-4.885 1.515c-2.952 4.385-3.757 8.67-3.361 12.86a20.103 20.103 0 0 0 6.007 3.015c.484-.652.918-1.342 1.297-2.07a12.964 12.964 0 0 1-2.043-.98c.171-.124.34-.252.504-.384a14.299 14.299 0 0 0 12.312 0c.165.132.334.26.505.384-.656.398-1.337.74-2.044.98.379.727.812 1.417 1.296 2.07a20.094 20.094 0 0 0 6.007-3.015c.457-4.718-.765-8.96-3.36-12.86zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/>
         </svg>
       </a>
       <a href="https://discord.gg/SM3zf8YPAv" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
           <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515c-.074.176-.143.35-.209.53a18.407 18.407 0 0 0-5.446 0 10.68 10.68 0 0 0-.21-.53 19.734 19.734 0 0 0-4.885 1.515c-2.952 4.385-3.757 8.67-3.361 12.86a20.103 20.103 0 0 0 6.007 3.015c.484-.652.918-1.342 1.297-2.07a12.964 12.964 0 0 1-2.043-.98c.171-.124.34-.252.504-.384a14.299 14.299 0 0 0 12.312 0c.165.132.334.26.505.384-.656.398-1.337.74-2.044.98.379.727.812 1.417 1.296 2.07a20.094 20.094 0 0 0 6.007-3.015c.457-4.718-.765-8.96-3.36-12.86zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/>
         </svg>
       </a>
-      </div>
-
-      <div class="copyright">
-        تم برمجة جميع الأدوات و تعديل المحرك بواسطة المطور عماد عادل.
-      </div>
-
     </div>
 
-      <script>
-      function openTab(evt, tabName) {
-        var i, content, buttons;
+    <div class="copyright">
+      تم برمجة جميع الأدوات وتعديل المحرك بواسطة المطور <strong style="color: #e67e22;">عماد عادل</strong>.
+    </div>
 
-        content = document.getElementsByClassName("tab-content");
-        for (i = 0; i < content.length; i++) {
-          content[i].classList.remove("active");
-        }
+  </div>
 
-        buttons = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < buttons.length; i++) {
-          buttons[i].classList.remove("active");
-        }
-
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
+  <script>
+    // ===== TABS =====
+    function openTab(evt, tabName) {
+      var i, content, buttons;
+      content = document.getElementsByClassName("tab-content");
+      for (i = 0; i < content.length; i++) {
+        content[i].classList.remove("active");
       }
-    </script>
+      buttons = document.getElementsByClassName("tab-btn");
+      for (i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    // ===== BACKGROUND SLIDESHOW =====
+    const slides = document.querySelectorAll('.bg-slide');
+    let currentSlide = 0;
+    const SLIDE_INTERVAL = 6000;
+
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    setInterval(nextSlide, SLIDE_INTERVAL);
+
+    // ===== COMMENTS SLIDER WITH AUTO-PLAY =====
+    const comments = [
+      "لعبة ضخمة و تعريبها استغرق منكم الوقت الكثير نشكركم على جهودكم الجبارة في هذا التعريب الاحترافي و هذا اقل شيء ممكن نقدمه هو الشكر والتقدير والاحترام لكل من عمل في هذا التعريب",
+      "الصراحه اشكركم عالتعريب والله اعطى طعم اكثر للعبه ومتعه اكثر بكثير اعرف شوي انقليزي افهم بس والله بالعربي دخلت جو مع اللعبه اكثر اشكركم جميعا والله يعوضكم خير على المجهودات اللي تقدموها ..",
+      "نشكركم على مجهودكم الجبار لإرضاء متجمع وعشاق اللعبة. انجاز يذكر فيشكر. نتمنى أن نراكم في مشاريع أخرى بنفس الجودة والاتقان.",
+      "الترجمة أغلبها ممتازة وسلسة وما حسيت اكو شي يأثر على تجربة اللعب وحتى النواقص بسيطة جدا مقارنة بحجم الشغل",
+    ];
+
+    let currentIndex = 0;
+    let autoPlayInterval = null;
+    const AUTO_PLAY_DELAY = 9550;
+
+    const commentText = document.getElementById('commentText');
+    const counter = document.getElementById('commentCounter');
+    const dotsContainer = document.getElementById('dotsContainer');
+
+    // Build dots
+    comments.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.dataset.index = i;
+      dot.addEventListener('click', () => {
+        stopAutoPlay();
+        goToComment(i);
+        startAutoPlay();
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function goToComment(index) {
+      currentIndex = (index + comments.length) % comments.length;
+      commentText.textContent = comments[currentIndex];
+      counter.textContent = `${currentIndex + 1} / ${comments.length}`;
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function nextComment() {
+      goToComment(currentIndex + 1);
+    }
+
+    function startAutoPlay() {
+      if (autoPlayInterval) clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(nextComment, AUTO_PLAY_DELAY);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+      }
+    }
+
+    // Pause on hover
+    const commentsSection = document.querySelector('.comments-section');
+    commentsSection.addEventListener('mouseenter', stopAutoPlay);
+    commentsSection.addEventListener('mouseleave', startAutoPlay);
+
+    // Pause on touch (mobile)
+    commentsSection.addEventListener('touchstart', stopAutoPlay);
+    commentsSection.addEventListener('touchend', startAutoPlay);
+
+    // Initialize and start
+    goToComment(0);
+    startAutoPlay();
+  </script>
 
 </body>
 </html>
