@@ -1,22 +1,23 @@
-[
-  {
-    "version": "1491",
-    "update": "5.5",
-    "data": {
-      "_lmlVer": "https://raw.githubusercontent.com/emadadeldev/rtea/main/lml-ver.txt",
-      "_InstallerVersion": "https://raw.githubusercontent.com/emadadeldev/rtea/main/installer-ver.txt",
-      "_LmlUpdate": "https://rt.emadadeldev.workers.dev/?lml-update",
-      "_DownloadLink": "https://emadadeldev.github.io/rtea/"
+{
+  "_InstallerVersion": "1.6",
+  "game": [
+    {
+      "version": "1491",
+      "update": "5.5",
+      "data": {
+        "_lmlVer": "https://raw.githubusercontent.com/emadadeldev/rtea/main/lml-ver.txt",
+        "_LmlUpdate": "https://rt.emadadeldev.workers.dev/?lml-update",
+        "_DownloadLink": "https://emadadeldev.github.io/rtea/"
+      }
+    },
+    {
+      "version": "1311",
+      "update": "5.5",
+      "data": {
+        "_lmlVer": "https://raw.githubusercontent.com/emadadeldev/rtea/main/lml-ver.txt",
+        "_LmlUpdate": "https://rt.emadadeldev.workers.dev/?lml-update",
+        "_DownloadLink": "https://emadadeldev.github.io/rtea/"
+      }
     }
-  },
-  {
-    "version": "1311",
-    "update": "5.5",
-    "data": {
-      "_lmlVer": "https://raw.githubusercontent.com/emadadeldev/rtea/main/lml-ver.txt",
-      "_InstallerVersion": "https://raw.githubusercontent.com/emadadeldev/rtea/main/installer-ver.txt",
-      "_LmlUpdate": "https://rt.emadadeldev.workers.dev/?lml-update",
-      "_DownloadLink": "https://emadadeldev.github.io/rtea/"
-    }
-  }
-]
+  ]
+}
