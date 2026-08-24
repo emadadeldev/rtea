@@ -2,10 +2,10 @@
   "_InstallerVersion": "1.6",
   "_DownloadLink": "https://emadadeldev.github.io/rtea/",
   "_changlog": "https://github.com/emadadeldev/rtea/blob/main/CHANGELOG.txt"
+  "update": "5.5",
   "game": [
     {
       "version": "1491",
-      "update": "5.5",
       "data": {
         "_lmlVer": "https://raw.githubusercontent.com/emadadeldev/rtea/main/lml-ver.txt",
         "_LmlUpdate": "https://rt.emadadeldev.workers.dev/?lml-update",
