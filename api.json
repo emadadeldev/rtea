@@ -18,6 +18,13 @@
         "_LmlUpdate": "https://rt.emadadeldev.workers.dev/?lml-update",
         "extrafiles": "https://rt.emadadeldev.workers.dev/?lml-extra"
       }
-    }
+    },
+    {
+      "version": "1436",
+      "data": {
+        "_LmlUpdate": "https://rt.emadadeldev.workers.dev/?lml-update",
+        "extrafiles": "https://rt.emadadeldev.workers.dev/?lml-extra"
+      }
+    },
   ]
 }
