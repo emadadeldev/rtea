@@ -1,26 +1,28 @@
-قبل أن تثبت التعريب، تأكد بأنك قمت بحذف أي تعريب سابق حتى لا يحصل أي تعارض أو أي مشاكل
+⚠ قبل تثبيت التعريب ⚠
+قبل تثبيت التعريب، تأكد من حذف أي تعريب سابق لتجنب حدوث أي تعارض أو مشاكل.
+قارن الملفات والمجلدات التالية مع الموجودة داخل مجلد اللعبة لديك، ثم احذف الملفات والمجلدات الخاصة بالتعريب السابق.
 
-هنا ملفات التعريبات السابقة وقارنها بالملفات الموجودة في مجلد اللعبة لديك وقم بحذفها
+المجلدات:
+• lml - (حذف هذا المجلد سيؤدي إلى حذف أي مودات مثبتة لديك)
+• redteamassets
+• mod backup
 
-مجلد lml (هذه الخطوة ستحذف أي مودات لديك)
-مجلد redteamassets
-مجلد mod backup
-
-asiloader
-dinput8
-installscript
-installscript_sdk
-redteamload.dll
-version.dll
-vfs
-asiloader
-lml.ini
-Nlog
-ModManager.core.dll
-ModManager.log
-ModManager.NativeInterop.dll
-NativeTrainer.asi
-ScriptHookRDR2.dll
-ScriptHookRDR2.log
-vfs.asi
-vfs.log
+الملفات:
+• asiloader
+• dinput8
+• installscript
+• installscript_sdk
+• redteamload.dll
+• version.dll
+• vfs
+• asiloader
+• lml.ini
+• Nlog
+• ModManager.core.dll
+• ModManager.log
+• ModManager.NativeInterop.dll
+• NativeTrainer.asi
+• ScriptHookRDR2.dll
+• ScriptHookRDR2.log
+• vfs.asi
+• vfs.log
