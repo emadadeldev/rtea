@@ -1,11 +1,11 @@
-النسخة الرسمية - Rockstar Games
+𓆩★𓆪 النسخة الرسمية - Rockstar Games 𓆩★𓆪 
 
-• ضع المثبت داخل مجلد اللعبة وشغّله كمسؤول.
-• شغّل Rockstar Games Launcher كمسؤول.
-• شغّل اللعبة من خلال Rockstar Games Launcher.
+• بعد وضع المثبت داخل مجلد اللعبة، اضغط عليه بزر الماوس الأيمن واختر Run as Administrator (تشغيل كمسؤول)
+• بعد ذلك، قم بتشغيل Rockstar Games Launcher كمسؤول أيضًا.
+• قم بتشغيل اللعبة من خلال Rockstar Games Launcher.
 
-النسخة غير الرسمية
+𓆩★𓆪 النسخة غير الرسمية 𓆩★𓆪 
 
-• ثبّت ملف التعريب كمسؤول.
-• انتقل إلى مجلد اللعبة.
-• شغّل ملف Launcher كمسؤول.
+• انتقل إلى مجلد اللعبة
+• قم بتشغيل ملف التعريب كمسؤول Run as Administrator
+• قم بتشغيل ملف Launcher كمسؤول  بعد التثبيت Run as Administrator 
