@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RTEA - PS4 & PS5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <meta name="title" content="Red Dead Redemption 2 تعريب">
+  <meta name="description" content="تعريب Red Dead Redemption 2">
+  <meta name="keywords" content="تعريب ريد ديد رديمبشن 2, تحميل تعريب RDR2, ترجمة RDR2 العربية, Red Dead Redemption 2, تعريب العاب, rdr2 localization, تعريب عماد عادل,Emad Adel, RDR2 Arabic translation, RDR2 localization, RDR2 mod, RDR2 modding, RDR2 translation, RDR2 Arabic mod, RDR2 Arabic patch, RDR2 Arabic subtitles, RDR2 Arabic, RDR2 Arabic text, RDR2 Arabic language pack">
+  <meta name="author" content="Emad Adel">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="Arabic">
+  <meta name="revisit-after" content="7 days">
+  <link rel="me" href="https://github.com/emadadeldev">
+  <link rel="author" href="https://github.com/emadadeldev">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-family: "Cairo", sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      position: relative;
+      background-image: url(https://w.wallhaven.cc/full/vg/wallhaven-vg9x7l.jpg);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.89);
+      z-index: -1;
+    }
+
+    .main-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 40px 20px 100px;
+      width: 100%;
+    }
+
+    .post-container {
+      width: 100%;
+      max-width: 900px;     
+      background: rgba(20, 20, 20, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 25px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 0.9s ease-out;
+      backdrop-filter: blur(6px);
+      overflow-wrap: break-word;  
+      word-wrap: break-word;
+    }
+
+    .post-container h1,
+    .post-container h2,
+    .post-container h3,
+    .post-container h4 {
+      background: linear-gradient(135deg, #f9e0a0, #e0b87a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 28px 0 16px;
+      overflow-wrap: break-word;
+    }
+
+    .post-container h1 { font-size: 2.2rem; }
+    .post-container h2 { font-size: 1.7rem; }
+    .post-container h3 { font-size: 1.3rem; }
+
+    .post-container h1:first-child,
+    .post-container h2:first-child,
+    .post-container h3:first-child {
+      margin-top: 0;
+    }
+
+    @supports not (background-clip: text) {
+      .post-container h1,
+      .post-container h2,
+      .post-container h3 {
+        color: #f5d742;
+      }
+    }
+
+    .post-container p {
+      color: #ddd;
+      line-height: 1.9;
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+    }
+
+    .post-container ul,
+    .post-container ol {
+      color: #ddd;
+      padding-right: 25px;
+      margin-bottom: 16px;
+      line-height: 1.9;
+    }
+
+    .post-container li {
+      margin-bottom: 10px;
+    }
+
+    .post-container a {
+      color: #e74c3c;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(231, 76, 60, 0.5);
+      transition: all 0.25s ease;
+      word-break: break-all;   
+      overflow-wrap: anywhere;
+      display: inline;
+    }
+
+    .post-container a:hover {
+      color: #ff6b5b;
+      border-bottom-color: #ff6b5b;
+    }
+
+    .post-container li a {
+      display: inline-block;
+      background: rgba(231, 76, 60, 0.08);
+      border: 1px solid rgba(231, 76, 60, 0.3);
+      border-bottom: 1px solid rgba(231, 76, 60, 0.3);
+      padding: 8px 14px;
+      border-radius: 6px;
+      margin: 4px 0;
+      font-size: 0.95rem;
+      direction: ltr;          
+      text-align: left;
+      max-width: 100%;
+      transition: all 0.25s ease;
+    }
+
+    .post-container li a:hover {
+      background: rgba(231, 76, 60, 0.18);
+      border-color: #ff6b5b;
+      transform: translateX(-3px);
+    }
+
+    .post-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 16px 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .post-container blockquote {
+      border-right: 4px solid rgb(161, 0, 0);
+      background: rgba(161, 0, 0, 0.08);
+      padding: 12px 18px;
+      margin: 18px 0;
+      color: #e0b87a;
+      border-radius: 6px;
+    }
+
+    .post-container hr {
+      border: none;
+      border-top: 1px solid rgba(230, 126, 34, 0.4);
+      margin: 28px 0;
+    }
+
+    .post-container pre {
+      background: #111;
+      border: 1px solid #333;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 16px 0;
+      direction: ltr;
+      text-align: left;
+      max-width: 100%;
+    }
+
+    .post-container ul,
+    .post-container ol {
+    list-style: none;
+    padding-right: 0;
+    }
+
+    .post-container code {
+      font-family: "Courier New", monospace;
+      color: #f9e0a0;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      word-break: break-all;
+    }
+
+    .post-container pre code {
+      background: transparent;
+      padding: 0;
+      color: #fff;
+    }
+
+    .post-container table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      color: #ddd;
+      display: block;
+      overflow-x: auto;  
+    }
+
+    .post-container th,
+    .post-container td {
+      border: 1px solid #333;
+      padding: 10px 14px;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .post-container th {
+      background: rgba(161, 0, 0, 0.25);
+      color: #f9e0a0;
+      font-weight: 700;
+    }
+
+    .loading,
+    .error-box {
+      text-align: center;
+      padding: 40px 20px;
+      color: #ddd;
+      font-size: 1.1rem;
+    }
+
+    .error-box h2 {
+      background: linear-gradient(135deg, #f9e0a0, #e0b87a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+    }
+
+    .error-box code {
+      background: #111;
+      border: 1px solid #333;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #f9e0a0;
+      font-family: monospace;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 25px;
+      padding: 10px 24px;
+      background: rgb(161, 0, 0);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    .back-btn:hover {
+      background: rgb(200, 0, 0);
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .post-container {
+        max-width: 95%;
+        padding: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-wrapper {
+        padding: 25px 14px 80px;
+      }
+      .post-container {
+        max-width: 100%;
+        padding: 24px 18px;
+        border-radius: 10px;
+      }
+      .post-container h1 { font-size: 1.75rem; }
+      .post-container h2 { font-size: 1.4rem; }
+      .post-container h3 { font-size: 1.15rem; }
+      .post-container p,
+      .post-container li { font-size: 1rem; }
+      .post-container li a {
+        font-size: 0.85rem;
+        padding: 7px 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-wrapper {
+        padding: 18px 10px 70px;
+      }
+      .post-container {
+        padding: 18px 14px;
+      }
+      .post-container h1 { font-size: 1.45rem; }
+      .post-container h2 { font-size: 1.2rem; }
+      .post-container h3 { font-size: 1.05rem; }
+      .post-container p,
+      .post-container li { font-size: 0.95rem; }
+      .post-container li a {
+        font-size: 0.78rem;
+        padding: 6px 8px;
+        border-radius: 5px;
+      }
+      .back-btn {
+        font-size: 0.85rem;
+        padding: 8px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-wrapper">
+
+    <a href="/" class="back-btn">< رجوع</a>
+    <article class="post-container" id="content">
+      <div class="loading">...</div>
+    </article>
+        <div class="copyright">
+          تم برمجة جميع الأدوات وتعديل المحرك بواسطة المطور <strong>عماد عادل</strong>
+        </div>
+  </div>
+
+  <script>
+    const MD_FILE = 'post.md';
+
+    fetch(MD_FILE)
+      .then(res => {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(md => {
+        marked.setOptions({
+          breaks: true,      
+          gfm: true,         
+          headerIds: true,
+          mangle: false
+        });
+
+        document.getElementById('content').innerHTML = marked.parse(md);
+      })
+      .catch(err => {
+        document.getElementById('content').innerHTML = `
+          <div class="error-box">
+            <h2>خطأ</h2>
+          </div>
+        `;
+      });
+  </script>
+</body>
+</html>
